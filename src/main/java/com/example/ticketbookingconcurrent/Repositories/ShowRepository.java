@@ -8,5 +8,6 @@ import java.util.Optional;
 
 @Repository
 public interface ShowRepository extends JpaRepository<Show, Long> {
+    @Override
     Optional<Show> findById(Long id);
 }

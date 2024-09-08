@@ -7,17 +7,24 @@ import com.example.ticketbookingconcurrent.Service.BookingService;
 import com.example.ticketbookingconcurrent.enums.ResponseStatus;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Controller;
+import org.springframework.web.bind.annotation.PostMapping;
+import org.springframework.web.bind.annotation.RequestBody;
+import org.springframework.web.bind.annotation.RequestMapping;
+import org.springframework.web.bind.annotation.RestController;
 
-@Controller
+
+@RestController
+@RequestMapping("/api/ticket")
 public class BookingController {
-    private final BookingService bookingService;
+    private BookingService bookingService;
 
     @Autowired
     public BookingController(BookingService bookingService) {
         this.bookingService = bookingService;
     }
 
-    public BookMovieShowResponseDTO bookTicket(BookMovieShowRequestDTO requestDTO) {
+    @PostMapping("/booking")
+    public BookMovieShowResponseDTO bookTicket(@RequestBody BookMovieShowRequestDTO requestDTO) {
         BookMovieShowResponseDTO responseDTO = new BookMovieShowResponseDTO();
         try {
             Booking booking = bookingService.bookTicket(requestDTO.getUserId(), requestDTO.getShowId(), requestDTO.getShowSeatIds());

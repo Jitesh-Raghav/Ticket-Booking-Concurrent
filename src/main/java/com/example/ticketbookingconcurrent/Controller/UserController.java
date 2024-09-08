@@ -7,8 +7,13 @@ import com.example.ticketbookingconcurrent.Service.UserService;
 import com.example.ticketbookingconcurrent.enums.ResponseStatus;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Controller;
+import org.springframework.web.bind.annotation.PostMapping;
+import org.springframework.web.bind.annotation.RequestBody;
+import org.springframework.web.bind.annotation.RequestMapping;
+import org.springframework.web.bind.annotation.RestController;
 
-@Controller
+@RestController
+@RequestMapping("/auth")
 public class UserController {
     private final UserService userService;
 
@@ -17,7 +22,8 @@ public class UserController {
         this.userService = userService;
     }
 
-    public SignUpResponseDTO signUp(SignUpRequestDTO requestDTO) {
+    @PostMapping("/signup")
+    public SignUpResponseDTO signUp(@RequestBody SignUpRequestDTO requestDTO) {
         SignUpResponseDTO responseDTO = new SignUpResponseDTO();
         try {
             User user = userService.signUp(requestDTO.getEmail(), requestDTO.getPassword());

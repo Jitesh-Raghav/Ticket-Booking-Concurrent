@@ -24,11 +24,15 @@ import java.util.Optional;
 public class BookingService {
 
 
+    @Autowired
     private UserRepository userRepository;
+    @Autowired
     private BookingRepository bookingRepository;
+    @Autowired
     private ShowSeatRepository showSeatRepository;
+    @Autowired
     private ShowRepository showRepository;
-    private ShowSeatTypeRepository showSeatTypeRepository;
+    @Autowired
     private PriceCalculatorService priceCalculatorService;
 
     @Autowired
@@ -36,13 +40,11 @@ public class BookingService {
                              BookingRepository bookingRepository,
                              ShowSeatRepository showSeatRepository,
                              ShowRepository showRepository,
-                             ShowSeatTypeRepository showSeatTypeRepository,
                           PriceCalculatorService priceCalculatorService){
         this.userRepository = userRepository;
         this.bookingRepository = bookingRepository;
         this.showRepository=showRepository;
         this.showSeatRepository=showSeatRepository;
-        this.showSeatTypeRepository=showSeatTypeRepository;
         this.priceCalculatorService=priceCalculatorService;
     }
 

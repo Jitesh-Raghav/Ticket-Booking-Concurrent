@@ -1,13 +1,15 @@
 package com.example.ticketbookingconcurrent.Entity;
 
+
 import jakarta.persistence.Entity;
 import jakarta.persistence.OneToMany;
 import lombok.Data;
 
 import java.util.List;
 
-@Entity(name="users")
+
 @Data
+@Entity
 public class User extends BaseModel{
     private String name;
     private String email;
